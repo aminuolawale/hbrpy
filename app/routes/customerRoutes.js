@@ -10,6 +10,6 @@ const router = express.Router();
 router.post('/customers', createCustomer);
 router.get('/customers', getCustomers);
 router.get('/customers/:customerId', getCustomerById);
-router.get('/customers/:name', getCustomerByName);
+router.get('/customer_by_name/:name', getCustomerByName);
 
 module.exports = router;
