@@ -10,7 +10,7 @@ pool.on('connect', () => {
 const createCustomerTable = () => {
   const customerCreateQuery = `CREATE TABLE IF NOT EXISTS customer
   (id SERIAL PRIMARY KEY, 
-  name VARCHAR(100), 
+  name VARCHAR(100) UNIQUE, 
   dateCreated DATE NOT NULL)`;
 
   pool.query(customerCreateQuery)
@@ -93,7 +93,7 @@ const createDiscountTable = () => {
  * Create Relationship Table
  */
 const createRelationshipTable = () => {
-  const discountCreateQuery = `CREATE TABLE IF NOT EXISTS relationship
+  const relationshipCreateQuery = `CREATE TABLE IF NOT EXISTS relationship
   (id SERIAL PRIMARY KEY, 
     customer_id INTEGER REFERENCES customer(id),
     store_id INTEGER REFERENCES store(id),

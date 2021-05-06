@@ -1,19 +1,29 @@
+const moment = require("moment")
+const stats = require("../helpers/status")
+const  dbQuery=  require("../db/dev/query");
+
+const {errorMessage , status, successMessage}= stats;
+
+
+
 const createCustomer = async (req, res) => {
   const { name } = req.body;
-
+    console.log("the names", name)
   const dateCreated = moment(new Date());
+  console.log("you!!")
   const createCustomerQuery = `INSERT INTO
-        customers(name, dateCreated)
+        customer (name, dateCreated)
         VALUES($1, $2)
         returning *`;
   const values = [name, dateCreated];
-
+    console.log(values)
   try {
     const { rows } = await dbQuery.query(createCustomerQuery, values);
     const dbResponse = rows[0];
     successMessage.data = dbResponse;
     return res.status(status.created).send(successMessage);
   } catch (error) {
+      console.log(error)
     errorMessage.error = "Operation was not successful";
     return res.status(status.error).send(errorMessage);
   }

@@ -1,6 +1,5 @@
 const pool = require("./pool")
-
-export default {
+module.exports =  {
   /**
    * DB Query
    * @param {object} req

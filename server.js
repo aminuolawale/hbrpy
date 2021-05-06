@@ -14,7 +14,7 @@ app.use(express.json());
 app.use('/api/v1', customerRoutes);
 
 
-app.listen(env.PORT).on('listening', () => {
+app.listen(process.env.PORT).on('listening', () => {
   console.log(`🚀 are live on ${process.env.PORT}`);
 });
 
