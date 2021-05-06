@@ -47,7 +47,7 @@ const getCustomers = async (req, res) => {
     const { rows } = await dbQuery.query(getCustomersQuery);
     const dbResponse = rows;
     if (dbResponse[0] === undefined) {
-      errorMessage.error = "There are no buses";
+      errorMessage.error = "There are no customers";
       return res.status(status.notfound).send(errorMessage);
     }
     successMessage.data = dbResponse;
